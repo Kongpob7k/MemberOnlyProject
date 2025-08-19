@@ -42,6 +42,4 @@ async function initializeDatabase() {
   }
 }
 
-module.exports = {
-  initializeDatabase
-}
+initializeDatabase();

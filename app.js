@@ -22,9 +22,7 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-(async () => {
-  await initializeDatabase();
-})();
+
 
 app.use(session({
     store : new pgSession({
