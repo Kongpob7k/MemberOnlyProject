@@ -22,7 +22,9 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-initializeDatabase();
+(async () => {
+  await initializeDatabase();
+})();
 
 app.use(session({
     store : new pgSession({
@@ -60,5 +62,5 @@ app.use(passport.session());
 app.use("/",indexRouter);
 
 app.listen(3000,()=>{
-    console.log("Server Running at Port",3000);
+    console.log("Server Running at Port",PORT);
 })
