@@ -4,17 +4,17 @@ async function initializeDatabase() {
   try {
     
     await pool.query(`
-      CREATE TABLE session (
+      CREATE TABLE IF NOT EXISTS session (
         sid varchar PRIMARY KEY,
         sess json NOT NULL,
         expire timestamp(6) NOT NULL
       );
     `);
-    await pool.query(`CREATE INDEX IDX_session_expire ON session (expire);`);
+    await pool.query(`CREATE INDEX IF NOT EXISTS IDX_session_expire ON session (expire);`);
 
     
     await pool.query(`
-      CREATE TABLE users (
+      CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         username VARCHAR(50) UNIQUE,
         password VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ async function initializeDatabase() {
 
     
     await pool.query(`
-      CREATE TABLE post (
+      CREATE TABLE IF NOT EXISTS post (
         id SERIAL PRIMARY KEY,
         title VARCHAR(255),
         content VARCHAR(500),

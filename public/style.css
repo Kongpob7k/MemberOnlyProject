@@ -5,6 +5,12 @@
     margin: 0;
 }
 
+p {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word; /* หรือ break-all สำหรับคำยาวมาก */
+}
+
 ul{
     list-style: none;
     padding: 0;
