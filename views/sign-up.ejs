@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemberOnly</title>
+    <link rel="stylesheet" href="/signup-style.css">
+</head>
+<body>
+    <nav >
+        <a id="logo" href="/">Member Only</a>
+    </nav>
+    <div id="main-container">
+        <div id="signup-container">
+            <h1 id="signuphead">Sign-Up</h1>
+            <%- include("partials/errors.ejs") %>
+            <form action="/sign-up" method="POST" id="signup">
+                <label>Username</label>
+                <input name="username" id="username" required>
+                <label>Password</label>
+                <input name="password" id="password" required>
+                <label>Confirm Password</label>
+                <input name="confirmPassword" id="confirmPassword" required>
+                <button>Confirm</button>
+            </form>
+            <p>Already Have account? <a href="/login">Log-in</a></p>
+        </div>
+    </div>
+    
+</body>
+</html>

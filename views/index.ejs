@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemberOnly</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav >
+        <a id="nav-header" href="/">MemberOnly</a>
+        <ul id="menu">
+            <% if(!locals.cur){ %>
+                <li><a href="/login">login</a></li>
+                <li><a href="/sign-up">signup</a></li>
+            <% } else { %>
+                <li><a href="/logout">logout</a></li>
+            <% } %>
+        </ul>
+    </nav>
+    <div id="main-container">
+        <% if(locals.cur){ %>
+            <%if(locals.error) {%>
+                <p><%= locals.error %></p>
+            <% } %>
+            
+            <%if(isadmin===0) {%>
+                <form action="/" method="POST" id="secretform">
+                    <label>Secret Pasword</label>
+                    <input name="secret">
+                    <button>confirm</button>
+                </form>
+            <% } else {%>
+                <p>You are Admin</p>
+            <% } %>
+            <a href="/form" id="addpostbutton">Add Post</a>
+        <% } %>
+        <div id="post-container">
+        <% for(let i=0;i<userPost.length;i++){ %>
+            <div class="post">
+                <p class="posttitle"><%= userPost[i].title %></p>
+                <% if(isadmin===0){ %>
+                    <p class="postusername">@Anonymous</p>
+                <% } else { %>
+                    <p class="postusername">@<%= userPost[i].username %></p>
+                <% } %>
+                <p class="postcontent"><%= userPost[i].content %></p>
+            </div>
+            
+        <% } %>
+        </div>
+    </div>
+        
+    
+    <script src="/script.js"></script>
+</body>
+</html>

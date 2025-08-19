@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Federant&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+
+body{
+    font-family: "Inter",sans-serif;
+    font-size: 16px;
+    height: 100vh;
+    background-color: #FFF2E0;
+}
+
+nav{
+    text-align: center;
+    padding: 20px;
+    background: #898AC4;
+
+    a{
+        text-decoration: none;
+        font-family: "Federant", serif;
+        color: rgb(255, 255, 255);
+        font-size: 40px;
+        
+    }
+}
+
+#main-container{
+    display: flex;               /* ใช้ flex */
+    justify-content: center;     /* จัดกึ่งกลางแนวนอน */
+    align-items: center;    
+    flex-direction: column;
+}
+
+#signuphead{
+    text-align: center;
+    color: #898AC4;
+    margin: 10px;
+}
+
+input{
+    height: 50px;
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 5px 10px;
+    border-width: 1.5px;
+}
+
+#signup-container{
+    max-width: 500px;   /* กว้างสุดไม่เกิน 500px */
+    width: 95%; 
+    border-color: rgb(201, 198, 198);
+    border-style: solid;
+    border-width: 1px;
+    padding: 30px;
+    border-radius: 7.5px;
+    background-color: #ffffff;
+    margin: 40px;
+}
+
+#signup{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+button{
+    border-radius: 7.5px;
+    height: 50px;
+    font-size: 20px;
+    border-width: 0;
+    background-color: #898AC4;
+    color: white;
+}
+
