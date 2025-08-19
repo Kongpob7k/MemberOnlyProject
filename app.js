@@ -8,8 +8,8 @@ const {pool} = require("./config/db");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const userModel = require("./models/userModel");
-const { initializeDatabase } = require("./models/initializeDatabase");
 const bcrypt = require("bcryptjs");
+const { initializeDatabase } =require("./models/initializeDatabase")
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
@@ -22,9 +22,6 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-(async () => {
-  await initializeDatabase();
-})();
 
 app.use(session({
     store : new pgSession({

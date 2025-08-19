@@ -88,7 +88,7 @@ exports.SignupPost = [
 ]
 
 exports.LoginGet = (req,res)=>{
-    const error = req.session.messages || [];
+    const error = req.session.messages || [] ;
     req.session.messages = []; // ล้าง message หลังใช้
     res.render('login', { error });
 }
