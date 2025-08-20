@@ -34,13 +34,16 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 }
 }))
 
+
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     const user = await userModel.findUserByUsername(username);
-    if (!user) return done(null, false, { message: 'Incorrect username.' });
+    if (!user) return done(null, false, { message: 'User not found' });
     const match = await bcrypt.compare(password, user.password);
-    if (!match) return done(null, false, { message: 'Incorrect password.' });
-    return done(null, user);
+    if (!match) return done(null, false, { message: 'Wrong password' });
+    else{
+        return done(null, user);
+    }
   })
 );
 

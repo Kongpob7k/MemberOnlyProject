@@ -38,7 +38,6 @@ exports.FormPost = async(req,res)=>{
     const currentUser = req.session.passport.user;
     const user = await userModel.findUserById(currentUser);
     await userModel.createForm(req.body.title,req.body.content,user.username);
-    //console.log(user);
     res.redirect("/");
 }
 
@@ -87,11 +86,11 @@ exports.SignupPost = [
     }
 ]
 
-exports.LoginGet = (req,res)=>{
-    const error = req.session.messages || [] ;
-    req.session.messages = []; // ล้าง message หลังใช้
-    res.render('login', { error });
-}
+exports.LoginGet = (req, res) => {
+    const error = req.session.error || [];
+    req.session.error = [];
+    res.render("login", { error });
+};
 
 exports.LoginPost = (req,res)=>{
     res.redirect("/");

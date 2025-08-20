@@ -20,7 +20,19 @@ router.get("/sign-up", indexControllers.SignupGet);
 router.post("/sign-up", indexControllers.SignupPost);
 
 router.get("/login",indexControllers.LoginGet);
-router.post("/login",passport.authenticate('local', { successRedirect: '/',failureRedirect: '/login' ,failureMessage: true}),indexControllers.LoginPost);
+router.post("/login", (req,res,next)=>{
+  passport.authenticate("local", (err,user,info)=>{
+    if (err) return next(err); 
+    if (!user) {
+      return res.render("login",{ error: [info.message] });
+    }
+    req.logIn(user, err=>{
+      if (err) return next(err);
+      return res.redirect("/"); 
+    });
+  })(req,res,next); 
+});
+
 
 router.get("/logout",indexControllers.LogoutGet);
 module.exports = router;
